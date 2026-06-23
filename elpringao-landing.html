@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Pringao — La crónica de cómo alguien normal se hunde</title>
+  <meta name="description" content="A los 47. Despedido. 40.000 euros que desaparecieron. Esto es lo que pasó. En el orden en que pasó. Sin que nadie lo arregle al final." />
+
+  <!-- =========================================================
+       META PIXEL — ID: 2945637039168012
+       ========================================================= -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2945637039168012');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=2945637039168012&ev=PageView&noscript=1" />
+  </noscript>
+  <!-- End Meta Pixel -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       RESET & BASE
+       ========================================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:        #0e0e0e;
+      --surface:   #161616;
+      --text:      #e4e0d8;
+      --muted:     #7a7570;
+      --accent:    #9b1f1f;
+      --accent-hover: #b52424;
+      --border:    #2a2520;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body:    'Source Serif 4', Georgia, serif;
+    }
+
+    html {
+      font-size: 18px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+      /* Grain texture overlay */
+      position: relative;
+    }
+
+    /* Grain via SVG filter */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+    }
+
+    /* =========================================================
+       LAYOUT WRAPPER
+       ========================================================= */
+    .wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* =========================================================
+       SECTION 1 — GOLPE DE ENTRADA (hero)
+       ========================================================= */
+    .hero {
+      padding: 72px 0 56px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .hero-avatar {
+      position: sticky;
+      top: 40px;
+    }
+
+    .hero-avatar img {
+      width: 100%;
+      max-width: 180px;
+      display: block;
+      border-radius: 2px;
+      filter: grayscale(30%) contrast(1.05);
+    }
+
+    /* Placeholder avatar si no hay imagen */
+    .avatar-placeholder {
+      width: 100%;
+      max-width: 180px;
+      aspect-ratio: 3/4;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-placeholder span {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-text {}
+
+    .hero-label {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    /* La línea clave en rojo */
+    .hero-headline em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.6;
+      border-left: 2px solid var(--border);
+      padding-left: 16px;
+    }
+
+    /* =========================================================
+       DIVIDER
+       ========================================================= */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* =========================================================
+       SECTION 2 — DE QUÉ VA ESTO
+       ========================================================= */
+    .about {
+      padding: 56px 0;
+    }
+
+    .about p {
+      margin-bottom: 24px;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .about p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Frase de identificación destacada */
+    .about .highlight {
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--text);
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+      margin-top: 32px;
+      margin-bottom: 0;
+    }
+
+    /* =========================================================
+       SECTION 3 — CTA PRINCIPAL
+       ========================================================= */
+    .cta-block {
+      padding: 48px 0 56px;
+      text-align: center;
+    }
+
+    .cta-block .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: var(--text);
+      margin-bottom: 32px;
+      line-height: 1.2;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+    }
+
+    /* Botón principal */
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 40px;
+      border-radius: 2px;
+      width: 100%;
+      max-width: 420px;
+      transition: background 0.18s ease, transform 0.12s ease;
+      /* Tracking click hacia Amazon - Tapa blanda */
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    /* Botón secundario */
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--muted);
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 32px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      width: 100%;
+      max-width: 420px;
+      transition: border-color 0.18s, color 0.18s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--muted);
+      color: var(--text);
+    }
+
+    .cta-note {
+      margin-top: 16px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    /* =========================================================
+       SECTION 4 — CAPTURA DE EMAIL
+       ========================================================= */
+    .email-block {
+      padding: 48px 0 56px;
+      background: var(--surface);
+      /* Nota: esta sección ocupa ancho completo */
+      margin: 0 -24px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .email-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .email-block .email-label {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .email-block p {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 28px;
+      max-width: 520px;
+    }
+
+    .email-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 480px;
+    }
+
+    .email-form input[type="email"] {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 300;
+      padding: 14px 16px;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.18s;
+      -webkit-appearance: none;
+    }
+
+    .email-form input[type="email"]::placeholder {
+      color: var(--muted);
+    }
+
+    .email-form input[type="email"]:focus {
+      border-color: var(--accent);
+    }
+
+    .btn-email {
+      background: var(--bg);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 24px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .btn-email:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .email-privacy {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* Estado de éxito del formulario */
+    .email-success {
+      display: none;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      padding: 20px 0;
+    }
+
+    /* =========================================================
+       SECTION 5 — PIE
+       ========================================================= */
+    .footer {
+      padding: 32px 0 40px;
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* =========================================================
+       RESPONSIVE — MOBILE FIRST ADJUSTMENTS
+       ========================================================= */
+    @media (max-width: 560px) {
+      html { font-size: 17px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 48px 0 40px;
+        text-align: center;
+      }
+
+      .hero-avatar {
+        position: static;
+        display: flex;
+        justify-content: center;
+      }
+
+      .hero-avatar img,
+      .avatar-placeholder {
+        max-width: 120px;
+      }
+
+      .hero-sub {
+        text-align: left;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        max-width: 100%;
+        font-size: 1.05rem;
+        padding: 16px 24px;
+      }
+
+      .about .highlight {
+        font-size: 1.05rem;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+    @media (prefers-reduced-motion: reduce) {
+      .btn-primary, .btn-secondary, .btn-email {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       SECCIÓN 1 — GOLPE DE ENTRADA
+       ========================================================= -->
+  <div class="wrapper">
+    <section class="hero">
+
+      <div class="hero-avatar">
+        <!--
+          INSTRUCCIÓN: Sustituye la línea de abajo por:
+          <img src="TU-FOTO.jpg" alt="Rafa, autor de El Pringao" />
+
+          Mientras tanto se muestra el placeholder.
+        -->
+        <div class="avatar-placeholder">
+          <span>Foto</span>
+        </div>
+      </div>
+
+      <div class="hero-text">
+        <span class="hero-label">Una historia real</span>
+        <h1 class="hero-headline">
+          Empecé a contar el dinero que me quedaba en la cuenta cada vez que me despertaba <em>a las 3 de la mañana.</em>
+        </h1>
+        <p class="hero-sub">
+          Esto es lo que pasó. En el orden en que pasó.<br />
+          Sin que nadie lo arregle al final.
+        </p>
+      </div>
+
+    </section>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- =========================================================
+       SECCIÓN 2 — DE QUÉ VA ESTO
+       ========================================================= -->
+  <div class="wrapper">
+    <section class="about">
+
+      <p>
+        A los 47, despedido. 40.000 euros que desaparecieron sin drama, sin derroche, sin un momento concreto en el que todo se fue a la mierda. Una pareja que aguantó hasta que no pudo más. Esto no es una historia de superación. Es la crónica de cómo alguien normal se convierte en el pringao de su propia vida.
+      </p>
+
+      <p>
+        Nadie escribe sobre la vergüenza de pagar con la tarjeta rezando para que pase. Sobre pedir la baja con el brazo roto porque no puedes permitirte no trabajar. Sobre la cara que pones cuando finges que todo va bien y por dentro estás haciendo la resta.
+      </p>
+
+      <p class="highlight">
+        Si alguna vez has contado lo que te queda en la cuenta a las 3 de la mañana, sabes de qué va esto.
+      </p>
+
+    </section>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- =========================================================
+       SECCIÓN 3 — CTA PRINCIPAL
+       ========================================================= -->
+  <div class="wrapper">
+    <section class="cta-block">
+
+      <p class="cta-title">Disponible en Amazon.<br />Ebook y tapa blanda.</p>
+
+      <div class="cta-buttons">
+
+        <!-- BOTÓN PRINCIPAL — Tapa blanda -->
+        <a
+          href="https://www.amazon.es/dp/B0FQTWHQJH"
+          class="btn-primary"
+          target="_blank"
+          rel="noopener"
+          onclick="fbq('track', 'InitiateCheckout', {content_name: 'El Pringao - Tapa blanda'});"
+        >
+          Leer desde el principio →
+        </a>
+
+        <!-- BOTÓN SECUNDARIO — Ebook -->
+        <a
+          href="https://www.amazon.es/dp/B0FQD5H4CK"
+          class="btn-secondary"
+          target="_blank"
+          rel="noopener"
+          onclick="fbq('track', 'InitiateCheckout', {content_name: 'El Pringao - Ebook'});"
+        >
+          Versión ebook (Kindle)
+        </a>
+
+      </div>
+
+      <p class="cta-note">Amazon ES · Envío disponible a toda España y Canarias</p>
+
+    </section>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- =========================================================
+       SECCIÓN 4 — CAPTURA DE EMAIL
+       ========================================================= -->
+  <section class="email-block">
+    <div class="email-inner">
+
+      <span class="email-label">Si no es el momento</span>
+
+      <p>
+        Déjame tu correo. Te mando la primera escena completa, gratis, sin lista de ventas ni newsletters de motivación.
+      </p>
+
+      <!--
+        INSTRUCCIÓN PARA CONECTAR EL FORMULARIO:
+        Cuando actives Carrd Pro o uses Mailchimp/ConvertKit,
+        sustituye el action="#" por el endpoint real de tu proveedor
+        de email. El JS de abajo muestra el mensaje de éxito
+        mientras tanto para que la UI no quede rota.
+      -->
+      <form
+        class="email-form"
+        id="emailForm"
+        action="#"
+        method="POST"
+        onsubmit="handleEmailSubmit(event)"
+      >
+        <input
+          type="email"
+          name="email"
+          placeholder="tu@correo.com"
+          required
+          autocomplete="email"
+        />
+        <button type="submit" class="btn-email">
+          Recibir la primera escena
+        </button>
+      </form>
+
+      <div class="email-success" id="emailSuccess">
+        Listo. En unos minutos lo tienes en el correo.
+      </div>
+
+      <p class="email-privacy">Sin spam. Sin newsletters. Solo la escena.</p>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECCIÓN 5 — PIE
+       ========================================================= -->
+  <div class="wrapper">
+    <footer class="footer">
+      <p>© El Pringao — Publicado en Amazon KDP</p>
+    </footer>
+  </div>
+
+  <!-- =========================================================
+       JAVASCRIPT MÍNIMO
+       ========================================================= -->
+  <script>
+    // Gestión del formulario de email
+    // Cuando conectes un endpoint real, elimina el preventDefault
+    // y deja que el formulario haga POST normalmente (o usa fetch).
+    function handleEmailSubmit(e) {
+      e.preventDefault();
+
+      const form    = document.getElementById('emailForm');
+      const success = document.getElementById('emailSuccess');
+
+      // Tracking Meta: lead captado
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead');
+      }
+
+      form.style.display    = 'none';
+      success.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
