@@ -6,6 +6,7 @@
   <title>El Pringao — La crónica de cómo alguien normal se hunde</title>
   <meta name="description" content="A los 47. Despedido. 40.000 euros que desaparecieron. Esto es lo que pasó. En el orden en que pasó. Sin que nadie lo arregle al final." />
 
+  <!-- META PIXEL -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -18,10 +19,8 @@
     fbq('init', '2945637039168012');
     fbq('track', 'PageView');
   </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=2945637039168012&ev=PageView&noscript=1" />
-  </noscript>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2945637039168012&ev=PageView&noscript=1" /></noscript>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -58,7 +57,6 @@
       width: 100%; max-width: 180px; display: block;
       border-radius: 2px; filter: grayscale(10%) contrast(1.05);
     }
-    .hero-text {}
     .hero-label {
       font-family: var(--font-display); font-size: 0.7rem; font-weight: 700;
       letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
@@ -99,7 +97,6 @@
       transition: background 0.18s ease, transform 0.12s ease;
     }
     .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
-    .btn-primary:active { transform: translateY(0); }
     .btn-secondary {
       display: inline-block; background: transparent; color: var(--muted);
       font-family: var(--font-display); font-size: 0.95rem; font-weight: 700;
@@ -109,9 +106,7 @@
     }
     .btn-secondary:hover { border-color: var(--muted); color: var(--text); }
     .cta-note { margin-top: 16px; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.03em; }
-    .email-block {
-      padding: 48px 24px 56px; background: var(--surface); margin: 0 -24px;
-    }
+    .email-block { padding: 48px 24px 56px; background: var(--surface); margin: 0 -24px; }
     .email-inner { max-width: 680px; margin: 0 auto; }
     .email-block .email-label {
       font-family: var(--font-display); font-size: 0.7rem; font-weight: 700;
@@ -135,10 +130,14 @@
       border-radius: 2px; cursor: pointer; transition: background 0.18s, color 0.18s;
     }
     .btn-email:hover { background: var(--accent); color: #fff; }
+    .btn-email:disabled { opacity: 0.6; cursor: not-allowed; }
     .email-privacy { margin-top: 10px; font-size: 0.78rem; color: var(--muted); }
     .email-success {
       display: none; font-family: var(--font-display); font-size: 1.1rem;
       font-weight: 700; letter-spacing: 0.05em; color: var(--text); padding: 20px 0;
+    }
+    .email-error {
+      display: none; font-size: 0.85rem; color: #c0392b; margin-top: 8px;
     }
     .footer { padding: 32px 0 40px; text-align: center; }
     .footer p { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
@@ -198,22 +197,16 @@
     <section class="cta-block">
       <p class="cta-title">Disponible en Amazon.<br />Ebook y tapa blanda.</p>
       <div class="cta-buttons">
-        <a
-          href="https://www.amazon.es/dp/B0FQTWHQJH"
-          class="btn-primary"
-          target="_blank"
-          rel="noopener"
-          onclick="fbq('track', 'InitiateCheckout', {content_name: 'El Pringao - Tapa blanda'});"
-        >Leer desde el principio &rarr;</a>
-        <a
-          href="https://www.amazon.es/dp/B0FQD5H4CK"
-          class="btn-secondary"
-          target="_blank"
-          rel="noopener"
-          onclick="fbq('track', 'InitiateCheckout', {content_name: 'El Pringao - Ebook'});"
-        >Versión ebook (Kindle)</a>
+        <a href="https://www.amazon.es/dp/B0FQTWHQJH" class="btn-primary" target="_blank" rel="noopener"
+           onclick="fbq('track', 'InitiateCheckout', {content_name: 'El Pringao - Tapa blanda'});">
+          Leer desde el principio &rarr;
+        </a>
+        <a href="https://www.amazon.es/dp/B0FQD5H4CK" class="btn-secondary" target="_blank" rel="noopener"
+           onclick="fbq('track', 'InitiateCheckout', {content_name: 'El Pringao - Ebook'});">
+          Versión ebook (Kindle)
+        </a>
       </div>
-      <p class="cta-note">Amazon ES · Envío disponible a toda España y Canarias</p>
+      <p class="cta-note">Amazon ES &middot; Envío disponible a toda España y Canarias</p>
     </section>
   </div>
 
@@ -223,12 +216,15 @@
     <div class="email-inner">
       <span class="email-label">Si no es el momento</span>
       <p>Déjame tu correo. Te mando la primera escena completa, gratis, sin lista de ventas ni newsletters de motivación.</p>
-      <form class="email-form" id="emailForm" action="https://formspree.io/f/xzdlzorq" method="POST">
-        <input type="email" name="email" placeholder="tu@correo.com" required autocomplete="email" />
-        <button type="submit" class="btn-email">Recibir la primera escena</button>
+      <form class="email-form" id="emailForm">
+        <input type="email" id="emailInput" name="email" placeholder="tu@correo.com" required autocomplete="email" />
+        <button type="submit" class="btn-email" id="emailBtn">Recibir la primera escena</button>
       </form>
       <div class="email-success" id="emailSuccess">
         Listo. En unos minutos lo tienes en el correo.
+      </div>
+      <div class="email-error" id="emailError">
+        Algo ha ido mal. Inténtalo de nuevo en un momento.
       </div>
       <p class="email-privacy">Sin spam. Sin newsletters. Solo la escena.</p>
     </div>
@@ -241,14 +237,92 @@
   </div>
 
   <script>
-    function handleEmailSubmit(e) {
+    // =========================================================
+    // BREVO API — Envío directo + email automático
+    // API Key: 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
+    // =========================================================
+
+    const BREVO_API_KEY = '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';
+
+    const PRIMERA_ESCENA = "El 30 de junio de 2017, faltando dos semanas para cumplir los 47, naci\u00f3 mi hijo. Con \u00e9l, y con la edad en la que me pillaba, era f\u00e1cil pensar que mi vida, como la conoc\u00eda hasta el momento, ya no iba a ser la misma. Lo que no sab\u00eda es que se iba a convertir en una mierda m\u00e1s grande de lo que hab\u00eda estado siendo hasta el momento. Un aut\u00e9ntico drama.\n\nPara centrar la historia empezar\u00e9 por el embarazo. Durante este per\u00edodo comenc\u00e9 a tener problemas laborales. La empresa para la cual trabajaba como Atenci\u00f3n al Estudiante para una universidad decidi\u00f3 deshacerse de todo el equipo de una manera \u2014llam\u00e9mosle\u2014 poco clara, con lo cual tuvimos que contratar a un abogado para denunciar. Nos recomendaron a uno que excompa\u00f1eros de la empresa ya hab\u00edan contratado con bastante \u00e9xito en el pasado. En nuestro caso... cagada. No tuvo \u00e9xito ninguno: de toda la indemnizaci\u00f3n que solicit\u00e1bamos solo conseguimos menos de la mitad. Y no creas que ped\u00edamos demasiado. Simplemente reclam\u00e1bamos despido improcedente (33 d\u00edas por a\u00f1o), en lugar del despido por final de obra que alegaba la empresa (12 d\u00edas por a\u00f1o).\n\nUna vez en la calle, y con el embarazo ya en las \u00faltimas semanas, tom\u00e9 una decisi\u00f3n: no buscar\u00eda trabajo por el momento. Aprovechar\u00eda el paro y, de esa manera, podr\u00eda estar al lado de mi pareja en los momentos m\u00e1s complicados: las semanas previas al parto y los primeros meses del beb\u00e9. Todo con el objetivo de acompa\u00f1arla a las visitas m\u00e9dicas, a los paseos, de estar presente en el parto, y de compartir lo que ser\u00edan unos primeros meses de locura.\n\n\u00bfFue una decisi\u00f3n de gilipollas? Probablemente s\u00ed, pero yo en aquel momento pens\u00e9 que hac\u00eda lo correcto, lo que deb\u00eda hacer para ser la pareja y futuro pap\u00e1 perfectos: lo que viene siendo un \"pringao\".\n\nLos primeros meses fueron brutales. El ni\u00f1o naci\u00f3 el 30 de junio y hasta agosto vivimos en la que hab\u00eda sido la casa de mi familia de toda la vida. Era un pisito peque\u00f1o, de tres habitaciones justitas, con un solo cuarto de ba\u00f1o, situado en un barrio obrero de Barcelona.\n\nEste piso me qued\u00f3 como herencia de mi difunta madre, que nos hab\u00eda dejado un a\u00f1o antes de la llegada del beb\u00e9. Fue un golpe duro, pero ley de vida, al fin y al cabo.\n\nVolviendo al piso de mi madre, finalmente lo tuve que malvender porque pesaba una deuda sobre \u00e9l, que ven\u00eda de una hipoteca inversa que solicit\u00f3 mi madre. La venta me dej\u00f3 unos cuarenta mil euros, los cuales fui gastando poco a poco para poder sobrevivir. Recuerda que estaba en el paro, que con este cobraba una miseria, y para completar un sueldo decente ten\u00eda que ir pellizcando ese dinero. En definitiva, me qued\u00e9 pelado en un suspiro.\n\n[Contin\u00faa en el libro \u2014 disponible en Amazon: https://www.amazon.es/dp/B0FQD5H4CK]";
+
+    document.getElementById('emailForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      const form = document.getElementById('emailForm');
-      const success = document.getElementById('emailSuccess');
-      if (typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
-      form.style.display = 'none';
-      success.style.display = 'block';
-    }
+
+      const email    = document.getElementById('emailInput').value.trim();
+      const btn      = document.getElementById('emailBtn');
+      const success  = document.getElementById('emailSuccess');
+      const errorDiv = document.getElementById('emailError');
+
+      btn.disabled   = true;
+      btn.textContent = 'Enviando...';
+      errorDiv.style.display = 'none';
+
+      try {
+        // 1. Añadir contacto a la lista de Brevo
+        await fetch('https://api.brevo.com/v3/contacts', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'api-key': BREVO_API_KEY
+          },
+          body: JSON.stringify({
+            email: email,
+            listIds: [2],
+            updateEnabled: true,
+            attributes: { FNAME: '', SOURCE: 'landing-elpringao' }
+          })
+        });
+
+        // 2. Enviar email con la primera escena
+        const emailBody = PRIMERA_ESCENA.replace(/\n/g, '<br>');
+
+        const sendRes = await fetch('https://api.brevo.com/v3/smtp/email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'api-key': BREVO_API_KEY
+          },
+          body: JSON.stringify({
+            sender: { name: 'Miguel García – El Pringao', email: 'loscorreosderafa@gmail.com' },
+            to: [{ email: email }],
+            subject: 'La primera escena de El Pringao (tal como ocurrió)',
+            htmlContent: `
+              <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; color: #222; line-height: 1.8; padding: 32px 24px;">
+                <p style="font-size: 13px; color: #888; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 32px;">El Pringao — Primera escena</p>
+                <p style="font-size: 18px; font-weight: bold; margin-bottom: 24px;">Esto es lo que pasó. En el orden en que pasó.</p>
+                <div style="font-size: 16px; line-height: 1.9;">${emailBody}</div>
+                <hr style="border: none; border-top: 1px solid #ddd; margin: 40px 0;" />
+                <p style="font-size: 13px; color: #888;">Si quieres seguir leyendo, el libro completo está en Amazon:</p>
+                <p style="margin-top: 12px;">
+                  <a href="https://www.amazon.es/dp/B0FQD5H4CK" style="background: #9b1f1f; color: #fff; padding: 12px 24px; text-decoration: none; font-family: sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 2px;">
+                    Leer el libro completo →
+                  </a>
+                </p>
+                <p style="margin-top: 32px; font-size: 12px; color: #aaa;">
+                  Te escribo porque pediste recibir esta escena en elpringao.github.io.<br>
+                  No habrá más correos a menos que lo pidas.
+                </p>
+              </div>
+            `
+          })
+        });
+
+        if (sendRes.ok || sendRes.status === 201) {
+          // Tracking Meta
+          if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+          document.getElementById('emailForm').style.display = 'none';
+          success.style.display = 'block';
+        } else {
+          throw new Error('Error al enviar');
+        }
+
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Recibir la primera escena';
+        errorDiv.style.display = 'block';
+      }
+    });
   </script>
 
 </body>
