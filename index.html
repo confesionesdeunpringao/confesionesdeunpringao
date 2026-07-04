@@ -238,13 +238,14 @@
 
   <script>
     // =========================================================
-    // BREVO API — Envío directo + email automático
-    // API Key: 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
+    // Envío de la primera escena — ahora vía Worker intermedio.
+    // Ya NO hay ninguna API key en este archivo. La key de Brevo
+    // vive solo dentro del Worker de Cloudflare, como variable
+    // secreta, y nunca llega al navegador del visitante.
     // =========================================================
 
-    const BREVO_API_KEY = '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';
-
-    const PRIMERA_ESCENA = "El 30 de junio de 2017, faltando dos semanas para cumplir los 47, naci\u00f3 mi hijo. Con \u00e9l, y con la edad en la que me pillaba, era f\u00e1cil pensar que mi vida, como la conoc\u00eda hasta el momento, ya no iba a ser la misma. Lo que no sab\u00eda es que se iba a convertir en una mierda m\u00e1s grande de lo que hab\u00eda estado siendo hasta el momento. Un aut\u00e9ntico drama.\n\nPara centrar la historia empezar\u00e9 por el embarazo. Durante este per\u00edodo comenc\u00e9 a tener problemas laborales. La empresa para la cual trabajaba como Atenci\u00f3n al Estudiante para una universidad decidi\u00f3 deshacerse de todo el equipo de una manera \u2014llam\u00e9mosle\u2014 poco clara, con lo cual tuvimos que contratar a un abogado para denunciar. Nos recomendaron a uno que excompa\u00f1eros de la empresa ya hab\u00edan contratado con bastante \u00e9xito en el pasado. En nuestro caso... cagada. No tuvo \u00e9xito ninguno: de toda la indemnizaci\u00f3n que solicit\u00e1bamos solo conseguimos menos de la mitad. Y no creas que ped\u00edamos demasiado. Simplemente reclam\u00e1bamos despido improcedente (33 d\u00edas por a\u00f1o), en lugar del despido por final de obra que alegaba la empresa (12 d\u00edas por a\u00f1o).\n\nUna vez en la calle, y con el embarazo ya en las \u00faltimas semanas, tom\u00e9 una decisi\u00f3n: no buscar\u00eda trabajo por el momento. Aprovechar\u00eda el paro y, de esa manera, podr\u00eda estar al lado de mi pareja en los momentos m\u00e1s complicados: las semanas previas al parto y los primeros meses del beb\u00e9. Todo con el objetivo de acompa\u00f1arla a las visitas m\u00e9dicas, a los paseos, de estar presente en el parto, y de compartir lo que ser\u00edan unos primeros meses de locura.\n\n\u00bfFue una decisi\u00f3n de gilipollas? Probablemente s\u00ed, pero yo en aquel momento pens\u00e9 que hac\u00eda lo correcto, lo que deb\u00eda hacer para ser la pareja y futuro pap\u00e1 perfectos: lo que viene siendo un \"pringao\".\n\nLos primeros meses fueron brutales. El ni\u00f1o naci\u00f3 el 30 de junio y hasta agosto vivimos en la que hab\u00eda sido la casa de mi familia de toda la vida. Era un pisito peque\u00f1o, de tres habitaciones justitas, con un solo cuarto de ba\u00f1o, situado en un barrio obrero de Barcelona.\n\nEste piso me qued\u00f3 como herencia de mi difunta madre, que nos hab\u00eda dejado un a\u00f1o antes de la llegada del beb\u00e9. Fue un golpe duro, pero ley de vida, al fin y al cabo.\n\nVolviendo al piso de mi madre, finalmente lo tuve que malvender porque pesaba una deuda sobre \u00e9l, que ven\u00eda de una hipoteca inversa que solicit\u00f3 mi madre. La venta me dej\u00f3 unos cuarenta mil euros, los cuales fui gastando poco a poco para poder sobrevivir. Recuerda que estaba en el paro, que con este cobraba una miseria, y para completar un sueldo decente ten\u00eda que ir pellizcando ese dinero. En definitiva, me qued\u00e9 pelado en un suspiro.\n\n[Contin\u00faa en el libro \u2014 disponible en Amazon: https://www.amazon.es/dp/B0FQD5H4CK]";
+    // Sustituye esta URL por la que te dé Cloudflare al desplegar el Worker
+    const ENDPOINT_URL = 'https://pringao.confesionesdeunpringao.workers.dev/';
 
     document.getElementById('emailForm').addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -259,56 +260,15 @@
       errorDiv.style.display = 'none';
 
       try {
-        // 1. Añadir contacto a la lista de Brevo
-        await fetch('https://api.brevo.com/v3/contacts', {
+        const res = await fetch(ENDPOINT_URL, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'api-key': BREVO_API_KEY
-          },
-          body: JSON.stringify({
-            email: email,
-            listIds: [2],
-            updateEnabled: true,
-            attributes: { FNAME: '', SOURCE: 'landing-elpringao' }
-          })
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email })
         });
 
-        // 2. Enviar email con la primera escena
-        const emailBody = PRIMERA_ESCENA.replace(/\n/g, '<br>');
+        const data = await res.json();
 
-        const sendRes = await fetch('https://api.brevo.com/v3/smtp/email', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'api-key': BREVO_API_KEY
-          },
-          body: JSON.stringify({
-            sender: { name: 'Miguel García – El Pringao', email: 'confesionesdeunpringao@gmail.com' },
-            to: [{ email: email }],
-            subject: 'La primera escena de El Pringao (tal como ocurrió)',
-            htmlContent: `
-              <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; color: #222; line-height: 1.8; padding: 32px 24px;">
-                <p style="font-size: 13px; color: #888; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 32px;">El Pringao — Primera escena</p>
-                <p style="font-size: 18px; font-weight: bold; margin-bottom: 24px;">Esto es lo que pasó. En el orden en que pasó.</p>
-                <div style="font-size: 16px; line-height: 1.9;">${emailBody}</div>
-                <hr style="border: none; border-top: 1px solid #ddd; margin: 40px 0;" />
-                <p style="font-size: 13px; color: #888;">Si quieres seguir leyendo, el libro completo está en Amazon:</p>
-                <p style="margin-top: 12px;">
-                  <a href="https://www.amazon.es/dp/B0FQD5H4CK" style="background: #9b1f1f; color: #fff; padding: 12px 24px; text-decoration: none; font-family: sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 2px;">
-                    Leer el libro completo →
-                  </a>
-                </p>
-                <p style="margin-top: 32px; font-size: 12px; color: #aaa;">
-                  Te escribo porque pediste recibir esta escena en elpringao.github.io.<br>
-                  No habrá más correos a menos que lo pidas.
-                </p>
-              </div>
-            `
-          })
-        });
-
-        if (sendRes.ok || sendRes.status === 201) {
+        if (res.ok && data.ok) {
           // Tracking Meta
           if (typeof fbq !== 'undefined') fbq('track', 'Lead');
           document.getElementById('emailForm').style.display = 'none';
