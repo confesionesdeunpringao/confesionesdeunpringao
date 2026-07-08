@@ -30,7 +30,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg: #0e0e0e; --surface: #161616; --text: #e4e0d8;
-      --muted: #7a7570; --accent: #9b1f1f; --accent-hover: #b52424;
+      --muted: #8a8479; --accent: #9b1f1f; --accent-hover: #b52424;
       --border: #2a2520;
       --font-display: 'Barlow Condensed', sans-serif;
       --font-body: 'Source Serif 4', Georgia, serif;
@@ -50,12 +50,14 @@
     .wrapper { max-width: 680px; margin: 0 auto; padding: 0 24px; }
     .hero {
       padding: 72px 0 56px; display: grid;
-      grid-template-columns: 1fr 2fr; gap: 40px; align-items: start;
+      grid-template-columns: 1fr 1.7fr; gap: 40px; align-items: start;
     }
     .hero-avatar { position: sticky; top: 40px; }
     .hero-avatar img {
-      width: 100%; max-width: 180px; display: block;
+      width: 100%; max-width: 220px; display: block;
       border-radius: 2px; filter: grayscale(10%) contrast(1.05);
+      box-shadow: 0 24px 48px -16px rgba(0,0,0,0.65), 0 10px 20px -10px rgba(0,0,0,0.5);
+      transform: rotate(-2deg);
     }
     .hero-label {
       font-family: var(--font-display); font-size: 0.7rem; font-weight: 700;
@@ -73,6 +75,18 @@
       color: var(--muted); line-height: 1.6;
       border-left: 2px solid var(--border); padding-left: 16px;
     }
+    .hero-cta {
+      margin-top: 32px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    }
+    .btn-hero {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-family: var(--font-display); font-size: 0.95rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none;
+      padding: 13px 26px; border-radius: 2px;
+      transition: background 0.18s ease, transform 0.12s ease;
+    }
+    .btn-hero:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .hero-cta-note { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.02em; }
     .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
     .about { padding: 56px 0; }
     .about p { margin-bottom: 24px; font-size: 1.05rem; color: var(--text); }
@@ -106,7 +120,15 @@
     }
     .btn-secondary:hover { border-color: var(--muted); color: var(--text); }
     .cta-note { margin-top: 16px; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.03em; }
-    .email-block { padding: 48px 24px 56px; background: var(--surface); margin: 0 -24px; }
+    .social-proof {
+      margin: 28px auto 0; max-width: 420px; padding: 18px 20px;
+      border: 1px solid var(--border); border-radius: 2px;
+    }
+    .social-proof .stars { color: var(--accent); font-size: 1rem; letter-spacing: 0.15em; margin-bottom: 8px; }
+    .social-proof .rating-count { font-size: 0.8rem; color: var(--muted); margin-left: 6px; letter-spacing: 0.01em; }
+    .social-proof .quote { font-style: italic; font-size: 0.95rem; color: var(--text); line-height: 1.5; }
+    .social-proof .quote-author { display: block; margin-top: 8px; font-size: 0.75rem; color: var(--muted); font-style: normal; letter-spacing: 0.04em; }
+    .email-block { padding: 48px 24px 56px; background: var(--surface); }
     .email-inner { max-width: 680px; margin: 0 auto; }
     .email-block .email-label {
       font-family: var(--font-display); font-size: 0.7rem; font-weight: 700;
@@ -145,13 +167,15 @@
       html { font-size: 17px; }
       .hero { grid-template-columns: 1fr; gap: 28px; padding: 48px 0 40px; text-align: center; }
       .hero-avatar { position: static; display: flex; justify-content: center; }
-      .hero-avatar img { max-width: 120px; }
+      .hero-avatar img { max-width: 150px; }
       .hero-sub { text-align: left; }
+      .hero-cta { justify-content: flex-start; }
+      .btn-hero { width: 100%; text-align: center; }
       .btn-primary, .btn-secondary { max-width: 100%; font-size: 1.05rem; padding: 16px 24px; }
       .about .highlight { font-size: 1.05rem; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .btn-primary, .btn-secondary, .btn-email { transition: none; }
+      .btn-primary, .btn-secondary, .btn-email, .btn-hero { transition: none; }
     }
   </style>
 </head>
@@ -171,6 +195,13 @@
           Esto es lo que pasó. En el orden en que pasó.<br />
           Sin que nadie lo arregle al final.
         </p>
+        <div class="hero-cta">
+          <a href="https://www.amazon.es/dp/B0FQTWHQJH" class="btn-hero" target="_blank" rel="noopener"
+             onclick="fbq('track', 'InitiateCheckout', {content_name: 'El Pringao - Tapa blanda (hero)'});">
+            Leer desde el principio &rarr;
+          </a>
+          <span class="hero-cta-note">Amazon &middot; ebook y tapa blanda</span>
+        </div>
       </div>
     </section>
   </div>
@@ -207,6 +238,20 @@
         </a>
       </div>
       <p class="cta-note">Amazon ES &middot; Envío disponible a toda España y Canarias</p>
+
+      <!--
+        PRUEBA SOCIAL — actívala en cuanto tengas datos reales de Amazon.
+        No publiques valoraciones ni citas inventadas: sustituye X,X / NN
+        por la valoración media y el número de reseñas reales, y la cita
+        por un fragmento textual corto de una reseña real (con permiso
+        implícito de reseña pública). Luego descomenta este bloque.
+
+        <div class="social-proof">
+          <div class="stars">★★★★★<span class="rating-count">X,X sobre 5 · NN valoraciones en Amazon</span></div>
+          <p class="quote">"Cita corta y real de una reseña de Amazon, tal cual la escribió el lector."</p>
+          <span class="quote-author">— Reseña verificada en Amazon</span>
+        </div>
+      -->
     </section>
   </div>
 
