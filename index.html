@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>El Pringao — La crónica de cómo alguien normal se hunde</title>
-  <meta name="description" content="A los 47. Despedido. Sin casa, sin familia y con dos préstamos. Esto es lo que pasó, en el orden en que pasó. Te mando la primera escena gratis." />
+  <meta name="description" content="A los 47. Despedido. Sin casa, sin familia y con dos préstamos. Esto es lo que pasó, en el orden en que pasó. Léelo aquí, escena a escena." />
 
   <!-- META PIXEL -->
   <script>
@@ -108,6 +108,25 @@
     .hero-cta-note a:hover { color: var(--accent); }
 
     .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* Hero: explicativo movido bajo el título + CTA de lectura */
+    .hero-narr { font-size: 1rem; color: var(--text); margin-bottom: 16px; }
+    .hero-quote {
+      font-style: italic; font-size: 1.08rem; color: var(--text);
+      border-left: 3px solid var(--accent); padding-left: 18px; margin: 22px 0 26px;
+    }
+    .btn-lead {
+      display: inline-block; background: var(--accent); border: 1px solid var(--accent);
+      color: #fff; font-family: var(--font-display); font-size: 1.05rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+      padding: 15px 28px; border-radius: 2px; transition: background 0.18s, transform 0.12s;
+    }
+    .btn-lead:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .scene-follow { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .scene-follow .follow-q {
+      font-family: var(--font-display); font-size: 1.05rem; font-weight: 700;
+      letter-spacing: 0.03em; color: var(--text); margin-bottom: 14px;
+    }
 
     /* ---------- EL RESTO DE LA ESCENA (Regla 18) ---------- */
     .scene { padding: 46px 0; }
@@ -236,17 +255,12 @@
       <div class="hero-text">
         <span class="hero-label">Una historia real</span>
         <h1 class="hero-headline">Muchas noches en vela preguntándome una sola cosa: cómo he llegado a convertirme en el <em>pringao</em> que soy.</h1>
-        <p class="hero-sub">Esto es lo que pasó. En el orden en que pasó. Sin que nadie lo arregle al final.</p>
-
-        <div class="hero-cta" id="recibir">
-          <form class="email-form" id="emailForm">
-            <input type="email" id="emailInput" placeholder="tu@correo.com" required autocomplete="email" />
-            <button type="submit" class="btn-email" id="emailBtn">Recibir la primera escena</button>
-            <p class="email-privacy">Gratis. Sin spam. Solo la escena.</p>
-          </form>
-          <div class="email-success" id="emailSuccess">Listo. En unos minutos lo tienes en el correo.</div>
-          <div class="email-error" id="emailError">Algo ha ido mal. Inténtalo de nuevo en un momento.</div>
-          <p class="hero-cta-note">¿Prefieres leerlo ya, completo? <a href="https://www.amazon.es/dp/B0FQTWHQJH" target="_blank" rel="noopener" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout');">En Amazon →</a></p>
+        <p class="hero-narr">A los 47 y con un hijo en camino, despedido. La pequeña cantidad de dinero de mi herencia desaparece demasiado rápido. Una pareja que decide, sin venir a cuento y sin decir nada, que yo ya no era ni su hombre, ni su pareja, ni su amigo: solo un compañero de piso con un hijo en común. Una mudanza obligado a la otra punta del país para poder ver crecer a mi hijo. Un malvivir en un lugar en el que no quiero estar.</p>
+        <p class="hero-narr">Esto no es una historia de superación, para nada. Es la crónica de cómo alguien normal se convierte en el pringao de su propia vida.</p>
+        <p class="hero-quote">Si alguna vez has dejado de hacer la compra de la semana porque no hay dinero en el banco, o has rezado en la caja del súper para que la tarjeta no salga rechazada, ya sabes de qué va esto.</p>
+        <div class="hero-cta">
+          <a class="btn-lead" href="#escena">Leer la última escena ↓</a>
+          <p class="hero-cta-note">¿Prefieres el libro entero? <a href="https://www.amazon.es/dp/B0FQTWHQJH" target="_blank" rel="noopener" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout');">En Amazon →</a></p>
         </div>
       </div>
     </section>
@@ -255,7 +269,15 @@
   <hr class="divider" />
 
   <div class="wrapper">
-    <!-- ============ EL RESTO DE LA ESCENA (Regla 18) ============ -->
+    <!-- ============ LA ÚLTIMA ESCENA — se lee en la web (payoff inmediato) ============ -->
+    <!--
+      ZONA EDITABLE — aquí se lee la escena, entera, sin puerta ni email.
+      Cada L/X/V se pega aquí la ESCENA PUBLICADA MÁS RECIENTE (la que teasea
+      el último reel). Como el enlace de la bio es único, el tráfico más fresco
+      llega buscando justo ésta, así que basta con mantenerla actualizada.
+      NO inventar: pegar el texto real del libro o del borrador aprobado,
+      sustituyendo los <p> de abajo.
+    -->
     <!--
       ZONA EDITABLE — el reel de IG/FB se corta en el pico de tension y promete
       "el resto en el enlace de la bio". Aqui es donde se cierra esa promesa.
@@ -264,28 +286,23 @@
       (Regla 18), pegar aqui su texto real (NO inventar) sustituyendo los <p>.
     -->
     <section class="scene" id="escena">
-      <span class="scene-eyebrow">El resto de la escena</span>
-      <h2 class="scene-lead">¿Vienes de una escena que se cortó justo donde dolía?</h2>
+      <span class="scene-eyebrow">La última escena</span>
+      <h2 class="scene-lead">Léela aquí. Entera. Como pasó.</h2>
       <div class="scene-card">
-        <p>Las cuento cortadas a propósito. El momento en que todo se tuerce se ve venir en un reel; cómo acaba de verdad, no cabe. Ahí es donde entra el libro.</p>
-        <p>Y para que veas que merece la pena antes de pagar nada, te mando <strong>la primera escena entera, gratis</strong>. Sin autoayuda ni finales felices fabricados: solo lo que pasó, con el humor negro que fue lo único que me quedó gratis.</p>
-        <p class="scene-cont">Si te engancha, el resto —cuarenta escenas más que nunca subo a las redes— está a un clic.</p>
-        <div class="scene-actions">
-          <a class="btn-inline" href="#recibir">Que me la manden →</a>
-          <a class="link-inline" href="https://www.amazon.es/dp/B0FQTWHQJH" target="_blank" rel="noopener" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout');">o leerlo entero en Amazon</a>
+        <p>Aquí dejo la escena más reciente, completa, para que la leas sin pagar nada y sin trucos.</p>
+        <p>Si vienes de un vídeo que se quedaba a medias, esta es su continuación. Y si acabas de aparecer, es tan buen sitio como cualquiera para empezar: la historia se entiende suelta. Sin autoayuda ni finales felices fabricados, solo lo que pasó, con el humor negro que fue lo único que me quedó gratis.</p>
+        <p class="scene-cont">La próxima llega el siguiente lunes, miércoles o viernes.</p>
+        <div class="scene-follow" id="recibir">
+          <p class="follow-q">¿Quieres que te avise cuando publique la próxima?</p>
+          <form class="email-form" id="emailForm">
+            <input type="email" id="emailInput" placeholder="tu@correo.com" required autocomplete="email" />
+            <button type="submit" class="btn-email" id="emailBtn">Avísame de la próxima</button>
+            <p class="email-privacy">Una escena nueva cada L · X · V. Te aviso, nada más. Sin spam.</p>
+          </form>
+          <div class="email-success" id="emailSuccess">Hecho. Te aviso cuando publique la próxima.</div>
+          <div class="email-error" id="emailError">Algo ha ido mal. Inténtalo de nuevo en un momento.</div>
         </div>
       </div>
-    </section>
-  </div>
-
-  <hr class="divider" />
-
-  <div class="wrapper">
-    <!-- ===================== LA HISTORIA ===================== -->
-    <section class="about">
-      <p>A los 47 y con un hijo en camino, despedido. La pequeña cantidad de dinero de mi herencia desaparece demasiado rápido. Una pareja que decide, sin venir a cuento y sin decir nada, que yo ya no era ni su hombre, ni su pareja, ni su amigo: solo un compañero de piso con un hijo en común. Una mudanza obligado a la otra punta del país para poder ver crecer a mi hijo. Un malvivir en un lugar en el que no quiero estar.</p>
-      <p>Esto no es una historia de superación, para nada. Es la crónica de cómo alguien normal se convierte en el pringao de su propia vida.</p>
-      <p class="highlight">Si alguna vez has dejado de hacer la compra de la semana porque no hay dinero en el banco, o has rezado en la caja del súper para que la tarjeta no salga rechazada, ya sabes de qué va esto.</p>
     </section>
   </div>
 
@@ -296,7 +313,7 @@
     <section class="hub">
       <span class="hub-label">Sigue la historia</span>
       <h2 class="hub-title">Esto no se cuenta en un solo sitio.</h2>
-      <p class="hub-intro">Cada escena se publica en redes; en vídeo la cuento con mi propia voz. Elige por dónde seguirla.</p>
+      <p class="hub-intro">Cada escena se publica en redes, la narro en vídeo y la cuento en audio. Léela o escúchala por donde prefieras.</p>
       <div class="hub-grid">
         <a class="hub-card" href="https://youtube.com/@confesionesdeunpringao" target="_blank" rel="noopener">
           <span class="hc-kicker">Vídeo</span>
@@ -327,7 +344,7 @@
   <div class="wrapper">
     <!-- ===================== COMPRAR (Amazon, secundario) ===================== -->
     <section class="buy">
-      <h2 class="buy-title">¿No quieres esperar al correo? Ya está completo en Amazon.</h2>
+      <h2 class="buy-title">¿No quieres esperar a la próxima escena? El libro está completo en Amazon.</h2>
       <p class="buy-sub">Ebook y tapa blanda. Envío a toda España y Canarias.</p>
       <div class="buy-buttons">
         <a class="btn-secondary" href="https://www.amazon.es/dp/B0FQTWHQJH" target="_blank" rel="noopener" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout');">Tapa blanda →</a>
@@ -373,7 +390,7 @@
         }
       } catch (err) {
         btn.disabled = false;
-        btn.textContent = 'Recibir la primera escena';
+        btn.textContent = 'Avísame de la próxima';
         errorDiv.style.display = 'block';
       }
     });
