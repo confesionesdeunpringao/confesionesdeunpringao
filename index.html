@@ -86,7 +86,9 @@
       transition: background 0.18s ease, transform 0.12s ease;
     }
     .btn-hero:hover { background: var(--accent-hover); transform: translateY(-1px); }
-    .hero-cta-note { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.02em; }
+    .hero-cta-note { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.02em; margin-top: 4px; }
+    .secondary-link { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    .secondary-link:hover { color: var(--text); }
     .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
     .about { padding: 56px 0; }
     .about p { margin-bottom: 24px; font-size: 1.05rem; color: var(--text); }
@@ -196,11 +198,23 @@
           Sin que nadie lo arregle al final.
         </p>
         <div class="hero-cta">
-          <a href="https://www.amazon.es/dp/B0FQTWHQJH" class="btn-hero" target="_blank" rel="noopener"
-             onclick="fbq('track', 'InitiateCheckout', {content_name: 'El Pringao - Tapa blanda (hero)'});">
-            Leer desde el principio &rarr;
-          </a>
-          <span class="hero-cta-note">Amazon &middot; ebook y tapa blanda</span>
+          <form class="email-form" id="emailForm">
+            <input type="email" id="emailInput" name="email" placeholder="tu@correo.com" required autocomplete="email" />
+            <button type="submit" class="btn-email" id="emailBtn">Recibir la primera escena</button>
+          </form>
+          <div class="email-success" id="emailSuccess">
+            Listo. En unos minutos lo tienes en el correo.
+          </div>
+          <div class="email-error" id="emailError">
+            Algo ha ido mal. Int&eacute;ntalo de nuevo en un momento.
+          </div>
+          <p class="email-privacy">Gratis. Sin spam. Solo la escena.</p>
+          <p class="hero-cta-note">
+            <a href="https://www.amazon.es/dp/B0FQTWHQJH" class="secondary-link" target="_blank" rel="noopener"
+               onclick="fbq('track', 'InitiateCheckout', {content_name: 'El Pringao - Tapa blanda (hero secondary)'});">
+              &iquest;Prefieres leerlo ya, completo? Amazon &rarr;
+            </a>
+          </p>
         </div>
       </div>
     </section>
@@ -226,11 +240,11 @@
 
   <div class="wrapper">
     <section class="cta-block">
-      <p class="cta-title">Disponible en Amazon.<br />Ebook y tapa blanda.</p>
+      <p class="cta-title">&iquest;No quieres esperar al correo?<br />Ya está completo en Amazon.</p>
       <div class="cta-buttons">
-        <a href="https://www.amazon.es/dp/B0FQTWHQJH" class="btn-primary" target="_blank" rel="noopener"
+        <a href="https://www.amazon.es/dp/B0FQTWHQJH" class="btn-secondary" target="_blank" rel="noopener"
            onclick="fbq('track', 'InitiateCheckout', {content_name: 'El Pringao - Tapa blanda'});">
-          Leer desde el principio &rarr;
+          Tapa blanda &rarr;
         </a>
         <a href="https://www.amazon.es/dp/B0FQD5H4CK" class="btn-secondary" target="_blank" rel="noopener"
            onclick="fbq('track', 'InitiateCheckout', {content_name: 'El Pringao - Ebook'});">
@@ -254,26 +268,6 @@
       -->
     </section>
   </div>
-
-  <hr class="divider" />
-
-  <section class="email-block">
-    <div class="email-inner">
-      <span class="email-label">Si no es el momento</span>
-      <p>Déjame tu correo. Te mando la primera escena completa, gratis, sin lista de ventas ni newsletters de motivación.</p>
-      <form class="email-form" id="emailForm">
-        <input type="email" id="emailInput" name="email" placeholder="tu@correo.com" required autocomplete="email" />
-        <button type="submit" class="btn-email" id="emailBtn">Recibir la primera escena</button>
-      </form>
-      <div class="email-success" id="emailSuccess">
-        Listo. En unos minutos lo tienes en el correo.
-      </div>
-      <div class="email-error" id="emailError">
-        Algo ha ido mal. Inténtalo de nuevo en un momento.
-      </div>
-      <p class="email-privacy">Sin spam. Sin newsletters. Solo la escena.</p>
-    </div>
-  </section>
 
   <div class="wrapper">
     <footer class="footer">
