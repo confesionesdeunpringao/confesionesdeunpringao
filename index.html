@@ -143,6 +143,10 @@
       background: var(--surface); border: 1px solid var(--border);
       border-left: 3px solid var(--accent); border-radius: 2px; padding: 26px 24px;
     }
+    .scene-title {
+      font-family: var(--font-display); font-size: 1.05rem; font-weight: 700;
+      letter-spacing: 0.02em; color: var(--accent); margin-bottom: 16px; display: block;
+    }
     .scene-card p { font-size: 1.02rem; color: var(--text); margin-bottom: 16px; }
     .scene-card p:last-of-type { margin-bottom: 0; }
     .scene-card .scene-cont {
@@ -195,6 +199,8 @@
     }
     .hub-card .hc-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--text); letter-spacing: 0.02em; }
     .hub-card .hc-desc { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+    .hub-card--secondary { opacity: 0.72; }
+    .hub-card--secondary:hover { opacity: 1; }
 
     /* ---------- COMPRAR (Amazon, secundario) ---------- */
     .buy { padding: 48px 0 40px; text-align: center; }
@@ -289,8 +295,17 @@
       <span class="scene-eyebrow">La última escena</span>
       <h2 class="scene-lead">Léela aquí. Entera. Como pasó.</h2>
       <div class="scene-card">
-        <p>Aquí dejo la escena más reciente, completa, para que la leas sin pagar nada y sin trucos.</p>
-        <p>Si vienes de un vídeo que se quedaba a medias, esta es su continuación. Y si acabas de aparecer, es tan buen sitio como cualquiera para empezar: la historia se entiende suelta. Sin autoayuda ni finales felices fabricados, solo lo que pasó, con el humor negro que fue lo único que me quedó gratis.</p>
+        <span class="scene-title">Escena 30 — "De cliente a empleado"</span>
+        <p>Pasaron algunas semanas desde que me había instalado en el apartamento de Josemi, y ya con el convenio de custodia firmado y en marcha. Ya empezaba a acostumbrarme a la rutina de la isla: el gimnasio, el piso, las semanas con el niño y sin él.</p>
+        <p>El negocio de Josemi iba viento en popa. Cada vez tenían más alumnos y necesitaban cubrir más horas de entreno. Mi compañero, Pepe, ya me conocía de coincidir entrenando allí. Sabía que yo tenía la certificación de CrossFit Nivel 1 y que había trabajado de esto en Barcelona, en un box de verdad. Cuando Josemi le pidió que buscara a alguien de confianza para cubrir esas horas, Pepe no dudó: le habló de mí.</p>
+        <p>Un día, al terminar uno de mis entrenos, Josemi se acercó. Sin rodeos: "¿Te interesaría hacer unas horas aquí?"</p>
+        <p>No me lo esperaba, pero tampoco lo dudé demasiado. Necesitaba ingresos, tenía la certificación y me gustaba entrenar. Lo único que le puse sobre la mesa fue mi situación real: "Mira, tengo al niño en custodia compartida, semana sí, semana no. Eso me limita las horas que puedo hacer algunas semanas."</p>
+        <p>Él lo resolvió sin darle más vueltas: "No hay problema. Ajustamos las horas. La semana que no tengas al niño, haces más horas. La semana que lo tengas, ajustamos y haces menos."</p>
+        <p>Me pareció justo. Más que justo, me pareció un alivio. Acepté en el momento.</p>
+        <p>Otra vez el mismo pensamiento que tuve con lo del piso: "bendito seas, Josemi". El tipo que meses antes me había sacado del infierno de aquel piso pequeño con la susodicha, ahora también me daba trabajo, y encima adaptado a lo único que de verdad me importaba: poder estar con mi hijo las semanas que me tocaban.</p>
+        <p>Empecé poco después. Al principio todo parecía ir bien. Un techo, un sueldo, un horario pensado para mi hijo. Por primera vez en mucho tiempo sentí que las piezas empezaban a encajar.</p>
+        <p>Lo que no sabía entonces es que ese mismo gimnasio, esa misma persona que tanto me había ayudado, me iba a enseñar muy pronto otra cara completamente distinta. Pero de eso hablaré en la próxima escena.</p>
+        <p>¿A alguien más le ha tocado organizar un trabajo entero en torno a la semana que le toca o no le toca su hijo?</p>
         <p class="scene-cont">La próxima llega el siguiente lunes, miércoles o viernes.</p>
         <div class="scene-follow" id="recibir">
           <p class="follow-q">¿Quieres que te avise cuando publique la próxima?</p>
@@ -313,27 +328,27 @@
     <section class="hub">
       <span class="hub-label">Sigue la historia</span>
       <h2 class="hub-title">Esto no se cuenta en un solo sitio.</h2>
-      <p class="hub-intro">Cada escena se publica en redes, la narro en vídeo y la cuento en audio. Léela o escúchala por donde prefieras.</p>
+      <p class="hub-intro">Sígueme donde ya estás. La historia también existe en vídeo y en audio, si prefieres.</p>
       <div class="hub-grid">
-        <a class="hub-card" href="https://youtube.com/@confesionesdeunpringao" target="_blank" rel="noopener">
-          <span class="hc-kicker">Vídeo</span>
-          <span class="hc-name">YouTube</span>
-          <span class="hc-desc">Las escenas, narradas en vídeo</span>
-        </a>
-        <a class="hub-card" href="https://open.spotify.com/search/Crisis%20de%20los%2050%20Confesiones%20de%20un%20pringao" target="_blank" rel="noopener">
-          <span class="hc-kicker">Podcast</span>
-          <span class="hc-name">Spotify</span>
-          <span class="hc-desc">"Crisis de los 50" en audio</span>
-        </a>
         <a class="hub-card" href="https://instagram.com/confesionespringao" target="_blank" rel="noopener">
-          <span class="hc-kicker">Reels</span>
+          <span class="hc-kicker">Sígueme</span>
           <span class="hc-name">Instagram</span>
           <span class="hc-desc">Una escena nueva cada L · X · V</span>
         </a>
         <a class="hub-card" href="https://facebook.com/confesionesdeunpringao" target="_blank" rel="noopener">
-          <span class="hc-kicker">Reels</span>
+          <span class="hc-kicker">Sígueme</span>
           <span class="hc-name">Facebook</span>
           <span class="hc-desc">La misma historia, otra ventana</span>
+        </a>
+        <a class="hub-card hub-card--secondary" href="https://youtube.com/@confesionesdeunpringao" target="_blank" rel="noopener">
+          <span class="hc-kicker">También en vídeo</span>
+          <span class="hc-name">YouTube</span>
+          <span class="hc-desc">Las escenas, narradas en vídeo</span>
+        </a>
+        <a class="hub-card hub-card--secondary" href="https://open.spotify.com/show/033MGgJS9UGrUjkSNhiRcV" target="_blank" rel="noopener">
+          <span class="hc-kicker">También en audio</span>
+          <span class="hc-name">Spotify</span>
+          <span class="hc-desc">"Crisis de los 50" en audio</span>
         </a>
       </div>
     </section>
@@ -356,7 +371,7 @@
 
   <footer class="footer">
     <div class="wrapper">
-      <p>© El Pringao — Publicado en Amazon KDP · <a href="https://youtube.com/@confesionesdeunpringao" target="_blank" rel="noopener">YouTube</a> · <a href="https://instagram.com/confesionespringao" target="_blank" rel="noopener">Instagram</a></p>
+      <p>© El Pringao — Publicado en Amazon KDP</p>
     </div>
   </footer>
 
