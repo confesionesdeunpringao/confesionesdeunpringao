@@ -124,6 +124,17 @@
     .hub-follow a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
     .hub-follow a:hover { color: var(--accent); border-color: var(--accent); }
 
+    /* ---------- VÍDEO ESTELAR ---------- */
+    .video-hero { padding: 46px 0; text-align: center; }
+    .video-hero .hub-label { display: block; }
+    .video-hero .hub-title { margin-bottom: 24px; }
+    .video-player {
+      width: 100%; max-width: 320px; aspect-ratio: 9 / 16;
+      display: block; margin: 0 auto; border-radius: 4px;
+      border: 1px solid var(--border); background: #000;
+      box-shadow: 0 24px 48px -16px rgba(0,0,0,0.65), 0 10px 20px -10px rgba(0,0,0,0.5);
+    }
+
     /* ---------- COMPRAR (Kindle primero) ---------- */
     .buy { padding: 48px 0 40px; text-align: center; }
     .buy .buy-title {
@@ -215,6 +226,20 @@
         </a>
       </div>
       <p class="hub-follow">Y cada lunes, miércoles y viernes publico una escena nueva en <a href="https://instagram.com/confesionespringao" target="_blank" rel="noopener">Instagram</a> y <a href="https://facebook.com/confesionesdeunpringao" target="_blank" rel="noopener">Facebook</a>.</p>
+    </section>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="wrapper">
+    <!-- ===================== VÍDEO ESTELAR ===================== -->
+    <section class="video-hero">
+      <span class="hub-label">Antes de que sigas bajando</span>
+      <h2 class="hub-title">Minuto y medio. Con mi voz, en vídeo.</h2>
+      <video class="video-player" controls playsinline preload="metadata" poster="image.jpg">
+        <source src="videoestelar.mp4" type="video/mp4" />
+        Tu navegador no soporta vídeo HTML5. <a href="videoestelar.mp4">Descárgalo aquí</a>.
+      </video>
     </section>
   </div>
 
