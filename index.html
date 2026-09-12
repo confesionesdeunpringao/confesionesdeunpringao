@@ -52,26 +52,23 @@
 
     /* ---------- HERO: vídeo primero (2 columnas en pantalla grande) ---------- */
     .hero-video {
-      display: grid; grid-template-columns: 1fr;
-      grid-template-areas: "label" "headline" "video" "tagline";
-      gap: 20px; padding: 46px 0 40px; text-align: center;
+      display: flex; flex-direction: column;
+      gap: 24px; padding: 46px 0 40px; text-align: center;
     }
+    .hero-copy { display: flex; flex-direction: column; gap: 14px; }
     .hero-label {
-      grid-area: label;
       font-family: var(--font-display); font-size: 0.72rem; font-weight: 700;
       letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
       display: block;
     }
     .hero-headline {
-      grid-area: headline;
       font-family: var(--font-display); font-size: clamp(1.8rem, 4.6vw, 2.5rem);
       font-weight: 900; line-height: 1.06; letter-spacing: -0.01em;
       color: var(--text);
     }
     .hero-headline em { font-style: normal; color: var(--accent); }
-    .hero-tagline { grid-area: tagline; font-size: 1rem; font-style: italic; color: var(--muted); line-height: 1.5; }
+    .hero-tagline { font-size: 1rem; font-style: italic; color: var(--muted); line-height: 1.5; }
     .video-player {
-      grid-area: video;
       width: 100%; max-width: 320px; aspect-ratio: 9 / 16;
       display: block; margin: 0 auto; border-radius: 4px;
       border: 1px solid var(--border); background: #000;
@@ -79,11 +76,14 @@
     }
     @media (min-width: 760px) {
       .hero-video {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas: "label video" "headline video" "tagline video";
-        align-items: center; text-align: left; gap: 48px; padding: 64px 0;
+        flex-direction: row-reverse; align-items: center;
+        text-align: left; gap: 56px; padding: 72px 0;
       }
-      .video-player { max-width: 360px; }
+      .hero-copy { flex: 1 1 0; gap: 20px; }
+      .hero-label { font-size: 0.9rem; letter-spacing: 0.18em; }
+      .hero-headline { font-size: clamp(2.6rem, 4vw, 4.2rem); }
+      .hero-tagline { font-size: 1.1rem; }
+      .video-player { flex: 0 0 auto; max-width: 360px; margin: 0; }
     }
 
     /* ---------- INTRO: texto largo a todo el ancho ---------- */
@@ -92,6 +92,10 @@
     .intro .intro-quote {
       font-style: italic; font-size: 1.1rem; color: var(--text);
       border-left: 3px solid var(--accent); padding-left: 18px; margin: 24px 0 28px;
+      break-inside: avoid;
+    }
+    @media (min-width: 760px) {
+      .intro { max-width: 900px; column-count: 2; column-gap: 56px; }
     }
     .intro-cta { margin-top: 8px; }
     .btn-lead {
@@ -173,13 +177,15 @@
   <div class="wrapper wrapper-wide">
     <!-- ===================== HERO: vídeo primero ===================== -->
     <section class="hero-video">
-      <span class="hero-label">Una historia real</span>
-      <h1 class="hero-headline">Cómo he llegado a convertirme en el <em>pringao</em> que soy.</h1>
       <video class="video-player" controls playsinline preload="metadata" poster="image.jpg">
         <source src="videoestelar.mp4" type="video/mp4" />
         Tu navegador no soporta vídeo HTML5. <a href="videoestelar.mp4">Descárgalo aquí</a>.
       </video>
-      <p class="hero-tagline">A los 47, despedido, sin casa y sin familia. Esto es lo que pasó, contado por escenas.</p>
+      <div class="hero-copy">
+        <span class="hero-label">Una historia real</span>
+        <h1 class="hero-headline">Cómo he llegado a convertirme en el <em>pringao</em> que soy.</h1>
+        <p class="hero-tagline">A los 47, despedido, sin casa y sin familia. Esto es lo que pasó, contado por escenas.</p>
+      </div>
     </section>
   </div>
 
