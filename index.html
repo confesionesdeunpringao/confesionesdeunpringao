@@ -48,6 +48,225 @@
       background-repeat: repeat; background-size: 200px 200px;
     }
     .wrapper { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+    .wrapper-wide { max-width: 680px; }
+
+    /* ---------- HERO: vídeo primero (2 columnas en pantalla grande) ---------- */
+    .hero-video {
+      display: grid; grid-template-columns: 1fr;
+      grid-template-areas: "label" "headline" "video" "tagline";
+      gap: 20px; padding: 46px 0 40px; text-align: center;
+    }
+    .hero-label {
+      grid-area: label;
+      font-family: var(--font-display); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+      display: block;
+    }
+    .hero-headline {
+      grid-area: headline;
+      font-family: var(--font-display); font-size: clamp(1.8rem, 4.6vw, 2.5rem);
+      font-weight: 900; line-height: 1.06; letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    .hero-headline em { font-style: normal; color: var(--accent); }
+    .hero-tagline { grid-area: tagline; font-size: 1rem; font-style: italic; color: var(--muted); line-height: 1.5; }
+    .video-player {
+      grid-area: video;
+      width: 100%; max-width: 320px; aspect-ratio: 9 / 16;
+      display: block; margin: 0 auto; border-radius: 4px;
+      border: 1px solid var(--border); background: #000;
+      box-shadow: 0 24px 48px -16px rgba(0,0,0,0.65), 0 10px 20px -10px rgba(0,0,0,0.5);
+    }
+    @media (min-width: 760px) {
+      .hero-video {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "label video" "headline video" "tagline video";
+        align-items: center; text-align: left; gap: 48px; padding: 64px 0;
+      }
+      .video-player { max-width: 360px; }
+    }
+
+    /* ---------- INTRO: texto largo a todo el ancho ---------- */
+    .intro { padding: 8px 0 46px; max-width: 640px; }
+    .intro p { font-size: 1.02rem; color: var(--text); margin-bottom: 16px; }
+    .intro .intro-quote {
+      font-style: italic; font-size: 1.1rem; color: var(--text);
+      border-left: 3px solid var(--accent); padding-left: 18px; margin: 24px 0 28px;
+    }
+    .intro-cta { margin-top: 8px; }
+    .btn-lead {
+      display: inline-block; background: var(--accent); border: 1px solid var(--accent);
+      color: #fff; font-family: var(--font-display); font-size: 1.05rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+      padding: 15px 28px; border-radius: 2px; transition: background 0.18s, transform 0.12s;
+    }
+    .btn-lead:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .intro-cta-note { margin-top: 16px; font-size: 0.82rem; color: var(--muted); }
+    .intro-cta-note a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
+    .intro-cta-note a:hover { color: var(--accent); }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ---------- PORTADA + COMPRAR (2 columnas en pantalla grande) ---------- */
+    .buy {
+      display: grid; grid-template-columns: 1fr;
+      grid-template-areas: "cover" "title" "sub" "buttons" "note";
+      gap: 20px; padding: 48px 0 40px; text-align: center;
+    }
+    .buy-cover { grid-area: cover; }
+    .buy-cover img {
+      width: 100%; max-width: 170px; display: block; margin: 0 auto; height: auto;
+      border-radius: 2px;
+      box-shadow: 0 24px 48px -16px rgba(0,0,0,0.65), 0 10px 20px -10px rgba(0,0,0,0.5);
+    }
+    .buy-title {
+      grid-area: title;
+      font-family: var(--font-display); font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+      font-weight: 700; color: var(--text); line-height: 1.2;
+    }
+    .buy-sub { grid-area: sub; font-size: 0.95rem; color: var(--muted); }
+    .buy-buttons { grid-area: buttons; display: flex; flex-direction: column; gap: 14px; align-items: center; }
+    @media (min-width: 760px) {
+      .buy {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "cover title" "cover sub" "cover buttons" "cover note";
+        align-items: center; text-align: left; gap: 48px;
+      }
+      .buy-cover img { max-width: 220px; margin: 0; }
+      .buy-buttons { align-items: flex-start; }
+    }
+    .btn-secondary {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-family: var(--font-display); font-size: 1.05rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+      padding: 15px 32px; border: 1px solid var(--accent); border-radius: 2px;
+      width: 100%; max-width: 420px; transition: background 0.18s, color 0.18s, transform 0.12s;
+    }
+    .btn-secondary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-block; background: transparent; color: var(--muted);
+      font-family: var(--font-display); font-size: 0.92rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      padding: 13px 32px; border: 1px solid var(--border); border-radius: 2px;
+      width: 100%; max-width: 420px; transition: border-color 0.18s, color 0.18s;
+    }
+    .btn-ghost:hover { border-color: var(--muted); color: var(--text); }
+    .buy-note { grid-area: note; margin-top: 16px; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.03em; }
+
+    .footer { padding: 30px 0 40px; text-align: center; }
+    .footer p { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+
+    @media (min-width: 760px) {
+      .wrapper-wide { max-width: 1040px; }
+    }
+    @media (max-width: 560px) {
+      html { font-size: 17px; }
+      .btn-secondary, .btn-ghost { max-width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .btn-lead, .btn-secondary, .btn-ghost { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper wrapper-wide">
+    <!-- ===================== HERO: vídeo primero ===================== -->
+    <section class="hero-video">
+      <span class="hero-label">Una historia real</span>
+      <h1 class="hero-headline">Cómo he llegado a convertirme en el <em>pringao</em> que soy.</h1>
+      <video class="video-player" controls playsinline preload="metadata" poster="image.jpg">
+        <source src="videoestelar.mp4" type="video/mp4" />
+        Tu navegador no soporta vídeo HTML5. <a href="videoestelar.mp4">Descárgalo aquí</a>.
+      </video>
+      <p class="hero-tagline">A los 47, despedido, sin casa y sin familia. Esto es lo que pasó, contado por escenas.</p>
+    </section>
+  </div>
+
+  <div class="wrapper wrapper-wide">
+    <!-- ===================== INTRO: texto largo a todo el ancho ===================== -->
+    <section class="intro">
+      <p>A los 47 y con un hijo en camino, despedido. La pequeña herencia que me quedaba desaparece demasiado rápido. Una pareja que decide, sin decir nada, que yo ya no era ni su hombre, ni su pareja, ni su amigo: solo un compañero de piso con un hijo en común. Una mudanza obligado a la otra punta del país para poder ver crecer a mi hijo.</p>
+      <p>Esto no es una historia de superación, para nada. Es la crónica de cómo alguien normal se convierte en el pringao de su propia vida.</p>
+      <p class="intro-quote">Si alguna vez has dejado de hacer la compra de la semana porque no hay dinero en el banco, o has rezado en la caja del súper para que la tarjeta no salga rechazada, ya sabes de qué va esto.</p>
+    </section>
+  </div>
+  <hr class="divider" />
+
+  <div class="wrapper wrapper-wide">
+    <!-- ===================== COMPRAR (Kindle primero) ===================== -->
+    <section class="buy" id="comprar">
+      <div class="buy-cover">
+        <img src="cover.jpg" alt="Crisis de los 50: Confesiones de un pringao — portada del libro" />
+      </div>
+      <h2 class="buy-title">¿No quieres esperar a la próxima escena? El libro está completo.</h2>
+      <p class="buy-sub">En Kindle lo lees en el móvil, desde donde estés, al instante.</p>
+      <div class="buy-buttons">
+        <a class="btn-secondary" href="https://www.amazon.es/dp/B0FQD5H4CK" target="_blank" rel="noopener" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout');">Leer en Kindle →</a>
+        <a class="btn-ghost" href="https://www.amazon.es/dp/B0FQTWHQJH" target="_blank" rel="noopener" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout');">También en tapa blanda (España)</a>
+      </div>
+      <p class="buy-note">"Crisis de los 50: Confesiones de un pringao" · Amazon</p>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="wrapper">
+      <p>© El Pringao — Publicado en Amazon KDP</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Pringao — La crónica de cómo alguien normal se hunde</title>
+  <meta name="description" content="A los 47. Despedido. Sin casa, sin familia y con dos préstamos. Escúchala con mi voz, míralo en vídeo o léelo entero." />
+
+  <!-- META PIXEL -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2945637039168012');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2945637039168012&ev=PageView&noscript=1" /></noscript>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Source+Serif+4:ital,wght@0,300;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0e0e0e; --surface: #161616; --surface-2: #1c1b19; --text: #e4e0d8;
+      --muted: #8a8479; --accent: #9b1f1f; --accent-hover: #b52424;
+      --border: #2a2520;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'Source Serif 4', Georgia, serif;
+    }
+    html { font-size: 18px; scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg); color: var(--text);
+      font-family: var(--font-body); font-weight: 300;
+      line-height: 1.7; min-height: 100vh; position: relative;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      z-index: 999; opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 200px 200px;
+    }
+    .wrapper { max-width: 680px; margin: 0 auto; padding: 0 24px; }
 
     /* ---------- HERO: vídeo primero ---------- */
     .hero-video { padding: 46px 0 40px; text-align: center; }
